@@ -1,4 +1,4 @@
-name: Linting 
+name: Linting and Testing
 
 on:
   push:
@@ -7,28 +7,55 @@ on:
     branches: [ main ]
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
+    # Определение версии Unity
+    - name: Get Unity version
+      run: |
+        UNITY_VERSION=$(grep "m_EditorVersion" ProjectSettings/ProjectVersion.txt | cut -d' ' -f2)
+        echo "UNITY_VERSION=${UNITY_VERSION}" >> $GITHUB_ENV
+        echo "Using Unity version: ${UNITY_VERSION}"
+
+    # Линтинг
     - name: Run Super-Linter for C#
       uses: super-linter/super-linter@v7.4.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DEFAULT_WORKSPACE: ./Files/Scripts
         VALIDATE_CSHARP: true
+        FILTER_REGEX_EXCLUDE: .*\.meta$
         OUTPUT_FORMAT: sarif
         OUTPUT_DETAIL: detailed
         OUTPUT_SARIF: ./sarif-report.sarif
       continue-on-error: true
 
+    # Запуск юнит-тестов через GameCI
+    - name: Run Unity tests
+      uses: game-ci/unity-test-runner@v2
+      with:
+        image: unityci/editor:latest
+        testMode: editMode
+        artifactsPath: ./test-results
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+    # Публикация результатов линтинга
     - name: Upload SARIF report
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: ./sarif-report.sarif
       continue-on-error: true
+
+    # Публикация результатов тестов
+    - name: Publish test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: |
+          ./test-results
+          ./sarif-report.sarif
