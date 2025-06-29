@@ -1,4 +1,4 @@
-name: C# Linting with Super-Linter
+name: Linting 
 
 on:
   push:
