@@ -15,11 +15,19 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Установка Unity через Docker (без активации)
+    # Получаем версию Unity из проекта
+    - name: Get Unity version
+      id: get_unity_version
+      run: |
+        UNITY_VERSION=$(grep "m_EditorVersion" ProjectSettings/ProjectVersion.txt | awk '{print $2}')
+        echo "UNITY_VERSION=$UNITY_VERSION" >> $GITHUB_ENV
+        echo "Using Unity version: $UNITY_VERSION"
+
+    # Используем официальный образ Unity для тестов
     - name: Setup Unity
       run: |
-        docker pull unityci/editor:ubuntu-6000.1.6f1-webgl
-        docker tag unityci/editor:ubuntu-6000.1.6f1-webgl unity-editor
+        docker pull unityci/editor:ubuntu-${{ env.UNITY_VERSION }}
+        docker tag unityci/editor:ubuntu-${{ env.UNITY_VERSION }} unity-editor
 
     # Линтинг
     - name: Run Super-Linter for C#
@@ -34,7 +42,7 @@ jobs:
         FILTER_REGEX_EXCLUDE: .*\.meta$  # Исключаем meta-файлы
       continue-on-error: true
 
-    # Запуск юнит-тестов через Unity Test Runner
+    # Запуск юнит-тестов
     - name: Run Unity tests
       run: |
         docker run \
