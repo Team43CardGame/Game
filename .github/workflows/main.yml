@@ -15,22 +15,11 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Установка Unity (для запуска тестов)
+    # Установка Unity через Docker (без активации)
     - name: Setup Unity
-      uses: game-ci/setup-unity@v1
-      with:
-        unity-version: 2022.3.25f1  # Укажите вашу версию Unity
-
-    # Восстановление зависимостей Unity
-    - name: Restore Unity dependencies
       run: |
-        unity-editor \
-          -batchmode \
-          -nographics \
-          -quit \
-          -logFile /dev/stdout \
-          -projectPath . \
-          -executeMethod UnityEditor.SyncVS.SyncSolution
+        docker pull unityci/editor:ubuntu-2022.3.25f1-webgl
+        docker tag unityci/editor:ubuntu-2022.3.25f1-webgl unity-editor
 
     # Линтинг
     - name: Run Super-Linter for C#
@@ -45,30 +34,32 @@ jobs:
         FILTER_REGEX_EXCLUDE: .*\.meta$  # Исключаем meta-файлы
       continue-on-error: true
 
-    # Запуск юнит-тестов
+    # Запуск юнит-тестов через Unity Test Runner
     - name: Run Unity tests
       run: |
-        unity-editor \
+        docker run \
+          -v "$(pwd):/project" \
+          -w /project \
+          unity-editor \
+          unity-editor \
           -batchmode \
           -nographics \
           -quit \
           -logFile /dev/stdout \
-          -projectPath . \
+          -projectPath /project \
           -runTests \
-          -testPlatform EditMode \  # Режим тестирования
-          -testResults ./test-results.xml
+          -testPlatform EditMode \
+          -testResults /project/test-results.xml
 
-    # Публикация результатов тестов
+    # Публикация результатов
     - name: Publish test results
       uses: actions/upload-artifact@v4
-      if: always()
       with:
         name: test-results
         path: |
           ./test-results.xml
           ./sarif-report.sarif
 
-    # Аплоад SARIF (оставляем по желанию)
     - name: Upload SARIF report
       uses: github/codeql-action/upload-sarif@v3
       with:
