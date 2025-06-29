@@ -18,8 +18,8 @@ jobs:
     # Установка Unity через Docker (без активации)
     - name: Setup Unity
       run: |
-        docker pull unityci/editor:ubuntu-2022.3.25f1-webgl
-        docker tag unityci/editor:ubuntu-2022.3.25f1-webgl unity-editor
+        docker pull unityci/editor:ubuntu-6000.1.6f1-webgl
+        docker tag unityci/editor:ubuntu-6000.1.6f1-webgl unity-editor
 
     # Линтинг
     - name: Run Super-Linter for C#
