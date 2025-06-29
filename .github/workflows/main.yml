@@ -15,19 +15,25 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Получаем версию Unity из проекта
+    # Определяем версию Unity
     - name: Get Unity version
       id: get_unity_version
       run: |
         UNITY_VERSION=$(grep "m_EditorVersion" ProjectSettings/ProjectVersion.txt | awk '{print $2}')
-        echo "UNITY_VERSION=$UNITY_VERSION" >> $GITHUB_ENV
-        echo "Using Unity version: $UNITY_VERSION"
+        echo "unity_version=${UNITY_VERSION}" >> $GITHUB_OUTPUT
+        echo "Using Unity version: ${UNITY_VERSION}"
 
-    # Используем официальный образ Unity для тестов
+    # Используем универсальный подход для образов Unity
     - name: Setup Unity
       run: |
-        docker pull unityci/editor:ubuntu-${{ env.UNITY_VERSION }}
-        docker tag unityci/editor:ubuntu-${{ env.UNITY_VERSION }} unity-editor
+        # Для версий 6000+ используем тег 'latest'
+        if [[ "${{ steps.get_unity_version.outputs.unity_version }}" == 6* ]]; then
+          docker pull unityci/editor:latest
+          docker tag unityci/editor:latest unity-editor
+        else
+          docker pull unityci/editor:${{ steps.get_unity_version.outputs.unity_version }}
+          docker tag unityci/editor:${{ steps.get_unity_version.outputs.unity_version }} unity-editor
+        fi
 
     # Линтинг
     - name: Run Super-Linter for C#
@@ -39,7 +45,7 @@ jobs:
         OUTPUT_FORMAT: sarif
         OUTPUT_DETAIL: detailed
         OUTPUT_SARIF: ./sarif-report.sarif
-        FILTER_REGEX_EXCLUDE: .*\.meta$  # Исключаем meta-файлы
+        FILTER_REGEX_EXCLUDE: .*\.meta$
       continue-on-error: true
 
     # Запуск юнит-тестов
