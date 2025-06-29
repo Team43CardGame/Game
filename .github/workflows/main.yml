@@ -1,4 +1,4 @@
-name: Linting 
+name: Linting and Testing
 
 on:
   push:
@@ -7,15 +7,32 @@ on:
     branches: [ main ]
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
+    # Установка Unity (для запуска тестов)
+    - name: Setup Unity
+      uses: game-ci/setup-unity@v1
+      with:
+        unity-version: 2022.3.25f1  # Укажите вашу версию Unity
+
+    # Восстановление зависимостей Unity
+    - name: Restore Unity dependencies
+      run: |
+        unity-editor \
+          -batchmode \
+          -nographics \
+          -quit \
+          -logFile /dev/stdout \
+          -projectPath . \
+          -executeMethod UnityEditor.SyncVS.SyncSolution
+
+    # Линтинг
     - name: Run Super-Linter for C#
       uses: super-linter/super-linter@v7.4.0
       env:
@@ -25,8 +42,33 @@ jobs:
         OUTPUT_FORMAT: sarif
         OUTPUT_DETAIL: detailed
         OUTPUT_SARIF: ./sarif-report.sarif
+        FILTER_REGEX_EXCLUDE: .*\.meta$  # Исключаем meta-файлы
       continue-on-error: true
 
+    # Запуск юнит-тестов
+    - name: Run Unity tests
+      run: |
+        unity-editor \
+          -batchmode \
+          -nographics \
+          -quit \
+          -logFile /dev/stdout \
+          -projectPath . \
+          -runTests \
+          -testPlatform EditMode \  # Режим тестирования
+          -testResults ./test-results.xml
+
+    # Публикация результатов тестов
+    - name: Publish test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: |
+          ./test-results.xml
+          ./sarif-report.sarif
+
+    # Аплоад SARIF (оставляем по желанию)
     - name: Upload SARIF report
       uses: github/codeql-action/upload-sarif@v3
       with:
