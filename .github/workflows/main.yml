@@ -98,7 +98,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           unityVersion: 6000.1.6f1
-          targetPlatform: Win64
+          targetPlatform: windows-latest
           projectPath: .
           buildName: CardGame
           buildsPath: build/windows
