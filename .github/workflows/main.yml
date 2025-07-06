@@ -49,26 +49,3 @@ jobs:
           testMode: editmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
-
-      # Отладка структуры artifacts (опционально)
-      - name: Debug Artifacts Directory
-        run: ls -la artifacts/ || echo "Artifacts directory not found"
-        continue-on-error: true
-
-      # Преобразуем результаты тестов в читаемый формат
-      - name: Publish Test Results
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: EditMode Test Results
-          path: artifacts/**/TestResults-*.xml
-          reporter: java-junit
-          fail-on-error: false
-
-      # Загружаем результаты тестов как артефакт
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Test Results
-          path: artifacts
