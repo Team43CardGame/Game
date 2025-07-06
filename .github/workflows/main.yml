@@ -8,20 +8,59 @@ on:
 
 jobs:
   lint-and-test:
+    name: Lint and Run EditMode Tests
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      # Клонируем репозиторий
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
 
-    # Линтинг
-    - name: Run Super-Linter for C#
-      uses: super-linter/super-linter@v7.4.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEFAULT_WORKSPACE: ./Assets/Scripts
-        VALIDATE_CSHARP: true
-        FILTER_REGEX_EXCLUDE: .*\.meta$
+      # Линтинг
+      - name: Run Super-Linter for C#
+        uses: super-linter/super-linter@v7.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_WORKSPACE: ./Assets/Scripts
+          VALIDATE_CSHARP: true
+          FILTER_REGEX_EXCLUDE: .*\.meta$
+        continue-on-error: true
 
+      # Освобождаем место на диске
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@v1.0.0
+        with:
+          tool-cache: true
+          large-packages: true
 
-      continue-on-error: true
+      # Кэшируем папку Library
+      - name: Cache Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
 
+      # Запускаем EditMode тесты
+      - name: Run Unity Tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }} 
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }} 
+        with:
+          projectPath: .
+          unityVersion: 6000.1.6f1 
+          testMode: editmode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: EditMode Test Results
+
+      # Загружаем результаты тестов
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test Results
+          path: artifacts
