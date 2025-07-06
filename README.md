@@ -107,4 +107,4 @@ git clone https://github.com/Team43CardGame/CardGame.git
 - **2** If you didn't download directory with game( name: "MVP2"), and read this file if browser, you need to download this directory.
 - **2.** Look at directory "MVP2", study files, check if number of directoryes inside is 4, number of .exe files is 2, number of .dll file is 1, and one file with instruction(such you read now). If numbers is equals, then directory was downloaded correctly, and you can continue.
 - **3.** Find "CardGameMultiplayer.exe"
-- 4.** Double-click the left mouse button on the file. After this the game will start itself.
+- **4.** Double-click the left mouse button on the file. After this the game will start itself.
