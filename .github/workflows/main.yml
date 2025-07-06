@@ -50,15 +50,20 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
 
+      # Отладка структуры artifacts (опционально)
+      - name: Debug Artifacts Directory
+        run: ls -la artifacts/ || echo "Artifacts directory not found"
+        continue-on-error: true
+
       # Преобразуем результаты тестов в читаемый формат
       - name: Publish Test Results
         uses: dorny/test-reporter@v1
-        if: always() # Выполняется даже при сбоях
+        if: always()
         with:
           name: EditMode Test Results
-          path: artifacts/*/TestResults-*.xml # Путь к XML-отчётам из unity-test-runner
-          reporter: java-junit # Unity использует JUnit-совместимый формат
-          fail-on-error: false # Не прерывать workflow при ошибках отчёта
+          path: artifacts/**/TestResults-*.xml
+          reporter: java-junit
+          fail-on-error: false
 
       # Загружаем результаты тестов как артефакт
       - name: Upload Test Results
