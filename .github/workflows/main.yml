@@ -1,4 +1,4 @@
-name: Linting and Testing
+name: Unity CI/CD
 
 on:
   push:
@@ -7,16 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  lint-and-test:
-    name: Lint and Run EditMode Tests
+  test-unit:
     runs-on: ubuntu-latest
     steps:
-      # Клонируем репозиторий
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # Checkout репозитория
+      - uses: actions/checkout@v4
         with:
-          lfs: true
-
+          fetch-depth: 0
       # Линтинг
       - name: Run Super-Linter for C#
         id: lint
@@ -28,45 +25,156 @@ jobs:
           FILTER_REGEX_EXCLUDE: .*\.meta$
         continue-on-error: true
 
-      # Кэшируем папку Library
-      - name: Cache Library
-        uses: actions/cache@v4
+      # Кэширование Unity Library
+      - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
 
-      # Запускаем EditMode тесты
-      - name: Run Unity Tests
-        id: test
-        uses: game-ci/unity-test-runner@v4
+      # Запуск юнит-тестов (EditMode)
+      - uses: game-ci/unity-test-runner@v3
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        continue-on-error: true
         with:
-          projectPath: .
           unityVersion: 6000.1.6f1
           testMode: editmode
+          projectPath: .
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: EditMode Test Results
-          customParameters: -testResults ./test-results.xml
+          customParameters: -batchmode -nographics
+        id: test-unit
 
-      # Генерируем красивую сводку
-      - name: Generate Summary
-        run: |
-          echo "# Выполнение задач" >> $GITHUB_STEP_SUMMARY
-          echo "## Линтинг" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.lint.outcome }}" == "success" ]; then
-            echo "- Super-Linter для C#: ✅ Прошёл" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- Super-Linter для C#: ❌ Завалился" >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "## EditMode Тесты" >> $GITHUB_STEP_SUMMARY
-          if [ -f ./test-results.xml ] && grep -q "test-run outcome=\"Passed\"" ./test-results.xml; then
-            echo "- Unity EditMode Тесты: ✅ Прошли" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- Unity EditMode Тесты: ❌ Завалились" >> $GITHUB_STEP_SUMMARY
-          fi
+      # Сохранение результатов юнит-тестов
+      - name: Upload Unit Test Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Unit-Test-Results
+          path: ${{ steps.test-unit.outputs.artifactsPath }}
+
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout репозитория
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Кэширование Unity Library
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Запуск интеграционных тестов (PlayMode)
+      - uses: game-ci/unity-test-runner@v3
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: 6000.1.6f1
+          testMode: playmode
+          projectPath: .
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          customParameters: -batchmode -nographics
+        id: test-integration
+
+      # Сохранение результатов интеграционных тестов
+      - name: Upload Integration Test Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Integration-Test-Results
+          path: ${{ steps.test-integration.outputs.artifactsPath }}
+
+  build-windows:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout репозитория
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Кэширование Unity Library
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Сборка билда для Windows
+      - uses: game-ci/unity-builder@v3
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: 6000.1.6f1
+          targetPlatform: Win64
+          projectPath: .
+          buildName: CardGame
+          buildsPath: build/windows
+        id: build-windows
+
+      # Загрузка билда как артефакта
+      - name: Upload Windows Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: CardGame-Win64
+          path: ${{ steps.build-windows.outputs.buildPath }}
+
+      # Публикация в GitHub Releases
+      - name: Create Release and Upload Windows Build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          name: CardGame-v${{ github.run_number }}-Win64
+          files: ${{ steps.build-windows.outputs.buildPath }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout репозитория
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Кэширование Unity Library
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Сборка билда для Linux
+      - uses: game-ci/unity-builder@v3
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: 6000.1.6f1
+          targetPlatform: Linux64
+          projectPath: .
+          buildName: CardGame
+          buildsPath: build/linux
+        id: build-linux
+
+      # Загрузка билда как артефакта
+      - name: Upload Linux Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: CardGame-Linux64
+          path: ${{ steps.build-linux.outputs.buildPath }}
+
+      # Публикация в GitHub Releases
+      - name: Create Release and Upload Linux Build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          name: CardGame-v${{ github.run_number }}-Linux64
+          files: ${{ steps.build-linux.outputs.buildPath }}
+          token: ${{ secrets.GITHUB_TOKEN }}
