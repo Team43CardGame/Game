@@ -3,14 +3,14 @@ using System;
 
 public class HandScript : MonoBehaviour
 {
-    [SerializeField] int handSize = 3;              // Amount of decks, and hence amount of colors
-    [SerializeField] int[] remainingCards;          // array with amounts of remaining cards
+    [SerializeField] public int handSize = 3;              // Amount of decks, and hence amount of colors
+    [SerializeField] public  int[] remainingCards;          // array with amounts of remaining cards
 
     [Space(20)]
     public           Player playerScript;           // PS, set by player, passed onto Decks for card selection
     public           GameObject deckPrefab;         // prefab of a DECK that's taken from player's cardPrefab?
 
-    bool initialized = false;
+    public bool initialized = false;
     void InitializeCards(int size)
     // Resets all the decks in hand in accordance to server
     {

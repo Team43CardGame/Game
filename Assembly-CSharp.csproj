@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\PrepScript.cs" />
     <Compile Include="Assets\Scripts\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\CardDeckScript.cs" />
+    <Compile Include="Assets\Playmode\Integrationtest.cs" />
     <Compile Include="Assets\Scripts\HandScript.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ScriptableObject\Spells\TakeCard\TakeCard.cs" />

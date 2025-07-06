@@ -17,7 +17,7 @@ public class Player : NetworkBehaviour
 
     [Space(20)]
 
-    [SerializeField] HandScript handScript;                 // Hand's script.
+    [SerializeField] public HandScript handScript;                 // Hand's script.
     public           PrepRenderer prepRenderer;               // ALL preps' renderer script.
     
     [Space(20)]
@@ -98,7 +98,7 @@ public class Player : NetworkBehaviour
 
 
     [ServerRpc(RequireOwnership = false)]
-    void MoveCardServerRpc(int color, int id, bool left, ServerRpcParams rpcParams = default)
+    public void MoveCardServerRpc(int color, int id, bool left, ServerRpcParams rpcParams = default)
     // ARGUMENT COLOR 0-1-2 R-Y-B
     {
         ulong senderId = rpcParams.Receive.SenderClientId;

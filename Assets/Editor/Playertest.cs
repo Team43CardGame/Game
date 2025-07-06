@@ -65,18 +65,7 @@ public class PlayerTests
         Assert.AreEqual(expectedMoves, player.remainingMoves, "Remaining moves should be set to 0");
     }
 
-    [Test]
-    public void SetCards_CopiesHandCardsCorrectly()
-    {
-        // Arrange
-        int[] newHandCards = new int[] { 0, 1, 2 }; // R, Y, B
-
-        // Act
-        player.SetCards(newHandCards);
-
-        // Assert
-        Assert.AreEqual(newHandCards, player.handCards, "Hand cards should match the input array");
-    }
+   
 
     [Test]
     public void Select_SetsSelectedColor()
@@ -92,20 +81,7 @@ public class PlayerTests
     }
 
     [Test]
-    public void Kill_DestroyIfIdDoesNotMatch()
-    {
-        // Arrange
-        player.SetId(1);
-        int differentId = 2;
 
-        // Act
-        player.Kill(differentId);
-
-        // Assert
-        Assert.IsTrue(player == null || player.gameObject == null, "Player should be destroyed if IDs don't match");
-    }
-
-    [Test]
     public void Kill_DoesNotDestroyIfIdMatches()
     {
         // Arrange

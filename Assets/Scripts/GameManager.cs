@@ -14,17 +14,17 @@ public class GameManager : NetworkBehaviour
     // PREP/CARDS: 3 values, representing the color of each card in this prep,
     // INCLUDING LACK OF A CARD!
     // Hence, 0-1-2-3 X-R-Y-B
-    int[,,] playerCards;           // i - players, j - hand/prep, k - cards
-    [SerializeField] int currentTurn;               // turn counter
-    [SerializeField] int playerCount;               // total player count
-    [SerializeField] GameObject playerPrefab;       // prefab of a player
-    [SerializeField] GameObject prepRenderPrefab;  // prefab of an prep renderer
+    public int[,,] playerCards;           // i - players, j - hand/prep, k - cards
+    [SerializeField] public int currentTurn;               // turn counter
+    [SerializeField] public int playerCount;               // total player count
+    [SerializeField] public GameObject playerPrefab;       // prefab of a player
+    [SerializeField] public GameObject prepRenderPrefab;  // prefab of an prep renderer
 
-    [SerializeField] int initCardAmount = 12;        // amount of cards to put in every hand
+    [SerializeField] public  int initCardAmount = 12;        // amount of cards to put in every hand
 
-    List<SpellEffect>[] spellEffectsOnPlayers;      // for now there conditions on players are stored
+    public List<SpellEffect>[] spellEffectsOnPlayers;      // for now there conditions on players are stored
 
-    SpellManager spellManager;                      // spell manager
+    public SpellManager spellManager;                      // spell manager
 
     [ClientRpc]
     void aClientRpc(bool f)
