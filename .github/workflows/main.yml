@@ -40,17 +40,27 @@ jobs:
       - name: Run Unity Tests
         uses: game-ci/unity-test-runner@v4
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }} 
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }} 
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           projectPath: .
-          unityVersion: 6000.1.6f1 
+          unityVersion: 6000.1.6f1
           testMode: editmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
 
-      # Загружаем результаты тестов
+      # Преобразуем результаты тестов в читаемый формат
+      - name: Publish Test Results
+        uses: dorny/test-reporter@v1
+        if: always() # Выполняется даже при сбоях
+        with:
+          name: EditMode Test Results
+          path: artifacts/*/TestResults-*.xml # Путь к XML-отчётам из unity-test-runner
+          reporter: java-junit # Unity использует JUnit-совместимый формат
+          fail-on-error: false # Не прерывать workflow при ошибках отчёта
+
+      # Загружаем результаты тестов как артефакт
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
