@@ -65,7 +65,18 @@ public class PlayerTests
         Assert.AreEqual(expectedMoves, player.remainingMoves, "Remaining moves should be set to 0");
     }
 
-   
+    [Test]
+    public void SetCards_CopiesHandCardsCorrectly()
+    {
+        // Arrange
+        int[] newHandCards = new int[] { 0, 1, 2 }; // R, Y, B
+
+        // Act
+        player.SetCards(newHandCards);
+
+        // Assert
+        Assert.AreEqual(newHandCards, player.handCards, "Hand cards should match the input array");
+    }
 
     [Test]
     public void Select_SetsSelectedColor()
