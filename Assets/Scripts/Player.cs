@@ -87,7 +87,7 @@ public class Player : NetworkBehaviour
         remainingMoves = turn ? maxMoves : 0;
     }
 
-    void SetCards(int[] newHandCards)
+    public void SetCards(int[] newHandCards)
     // Sets Decks to player and passes on to Hand 
     {
         handCards = new int[newHandCards.Length];
