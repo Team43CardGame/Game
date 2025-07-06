@@ -7,14 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  test-unit:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      # Checkout репозитория
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # Линтинг
       - name: Run Super-Linter for C#
         id: lint
         uses: super-linter/super-linter@v7.4.0
@@ -25,16 +23,19 @@ jobs:
           FILTER_REGEX_EXCLUDE: .*\.meta$
         continue-on-error: true
 
-      # Кэширование Unity Library
+  test-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
-      # Запуск юнит-тестов (EditMode)
-      - uses: game-ci/unity-test-runner@v3
+      - uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
@@ -44,8 +45,6 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           customParameters: -batchmode -nographics
         id: test-unit
-
-      # Сохранение результатов юнит-тестов
       - name: Upload Unit Test Results
         uses: actions/upload-artifact@v3
         if: always()
@@ -56,21 +55,16 @@ jobs:
   test-integration:
     runs-on: ubuntu-latest
     steps:
-      # Checkout репозитория
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # Кэширование Unity Library
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
-      # Запуск интеграционных тестов (PlayMode)
-      - uses: game-ci/unity-test-runner@v3
+      - uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
@@ -80,8 +74,6 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           customParameters: -batchmode -nographics
         id: test-integration
-
-      # Сохранение результатов интеграционных тестов
       - name: Upload Integration Test Results
         uses: actions/upload-artifact@v3
         if: always()
@@ -92,21 +84,16 @@ jobs:
   build-windows:
     runs-on: ubuntu-latest
     steps:
-      # Checkout репозитория
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # Кэширование Unity Library
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
-      # Сборка билда для Windows
-      - uses: game-ci/unity-builder@v3
+      - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
@@ -116,15 +103,11 @@ jobs:
           buildName: CardGame
           buildsPath: build/windows
         id: build-windows
-
-      # Загрузка билда как артефакта
       - name: Upload Windows Build
         uses: actions/upload-artifact@v3
         with:
           name: CardGame-Win64
           path: ${{ steps.build-windows.outputs.buildPath }}
-
-      # Публикация в GitHub Releases
       - name: Create Release and Upload Windows Build
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
@@ -137,21 +120,16 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      # Checkout репозитория
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # Кэширование Unity Library
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
-      # Сборка билда для Linux
-      - uses: game-ci/unity-builder@v3
+      - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
@@ -161,15 +139,11 @@ jobs:
           buildName: CardGame
           buildsPath: build/linux
         id: build-linux
-
-      # Загрузка билда как артефакта
       - name: Upload Linux Build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: CardGame-Linux64
           path: ${{ steps.build-linux.outputs.buildPath }}
-
-      # Публикация в GitHub Releases
       - name: Create Release and Upload Linux Build
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
