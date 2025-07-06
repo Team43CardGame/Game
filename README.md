@@ -116,8 +116,10 @@ This improves maintainability and allows for future extension.
 4. Player places 2 cards on the table
 5. If combination matches a spell, it's cast
 6. The game engine applies effects to the target(s)
+7. 
+--------------------------
 
-## How to launch game:
+# **How to launch game**:
 - **1.** Use Windows OS.
 - **2** If you didn't download directory with game( name: "MVP2"), and read this file if browser, you need to download this directory.
 - **2.** Look at directory "MVP2", study files, check if number of directoryes inside is 4, number of .exe files is 2, number of .dll file is 1, and one file with instruction(such you read now). If numbers is equals, then directory was downloaded correctly, and you can continue.
