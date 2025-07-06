@@ -51,6 +51,7 @@ jobs:
           testMode: editmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
+          customParameters: -testResults ./test-results.xml
 
       # Генерируем красивую сводку
       - name: Generate Summary
@@ -63,7 +64,7 @@ jobs:
             echo "- Super-Linter для C#: ❌ Завалился" >> $GITHUB_STEP_SUMMARY
           fi
           echo "## EditMode Тесты" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.test.outcome }}" == "success" ]; then
+          if [ -f ./test-results.xml ] && grep -q "test-run outcome=\"Passed\"" ./test-results.xml; then
             echo "- Unity EditMode Тесты: ✅ Прошли" >> $GITHUB_STEP_SUMMARY
           else
             echo "- Unity EditMode Тесты: ❌ Завалились" >> $GITHUB_STEP_SUMMARY
