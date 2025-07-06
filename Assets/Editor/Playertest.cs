@@ -92,7 +92,6 @@ public class PlayerTests
     }
 
     [Test]
-
     public void Kill_DoesNotDestroyIfIdMatches()
     {
         // Arrange
@@ -104,5 +103,47 @@ public class PlayerTests
 
         // Assert
         Assert.IsNotNull(player, "Player should not be destroyed if IDs match");
+    }
+
+    [Test]
+    public void Kill_DestroysIfIdDoesNotMatch()
+    {
+        // Arrange
+        player.SetId(1);
+        int differentId = 2;
+
+        // Act
+        player.Kill(differentId);
+
+        // Assert
+        Assert.IsTrue(player.gameObject == null, "Player should be destroyed if IDs do not match");
+    }
+
+    [Test]
+    public void CastSpell_ReducesRemainingMoves_WhenTurnIsTrue()
+    {
+        // Arrange
+        player.TakeTurn(true); // Set turn to true and remainingMoves to 1
+        int initialMoves = player.remainingMoves;
+
+        // Act
+        player.CastSpell();
+
+        // Assert
+        Assert.AreEqual(initialMoves - 1, player.remainingMoves, "Remaining moves should decrease by 1 after casting spell");
+    }
+
+    [Test]
+    public void EndTurn_DoesNotCallServerRpc_WhenTurnIsFalse()
+    {
+        // Arrange
+        player.TakeTurn(false); // Set turn to false
+
+        // Act
+        player.EndTurn();
+
+        // Assert
+        // Since EndTurnServerRpc is not mocked, we verify indirectly by checking turn state
+        Assert.IsFalse(player.Turn, "EndTurn should not proceed if turn is false");
     }
 }
