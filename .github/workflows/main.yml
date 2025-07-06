@@ -19,6 +19,7 @@ jobs:
 
       # Линтинг
       - name: Run Super-Linter for C#
+        id: lint
         uses: super-linter/super-linter@v7.4.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -38,6 +39,7 @@ jobs:
 
       # Запускаем EditMode тесты
       - name: Run Unity Tests
+        id: test
         uses: game-ci/unity-test-runner@v4
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -49,3 +51,20 @@ jobs:
           testMode: editmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
+
+      # Генерируем красивую сводку
+      - name: Generate Summary
+        run: |
+          echo "# Выполнение задач" >> $GITHUB_STEP_SUMMARY
+          echo "## Линтинг" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.lint.outcome }}" == "success" ]; then
+            echo "- Super-Linter для C#: ✅ Прошёл" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Super-Linter для C#: ❌ Завалился" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "## EditMode Тесты" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.test.outcome }}" == "success" ]; then
+            echo "- Unity EditMode Тесты: ✅ Прошли" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Unity EditMode Тесты: ❌ Завалились" >> $GITHUB_STEP_SUMMARY
+          fi
