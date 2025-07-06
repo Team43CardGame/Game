@@ -11,9 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout репозитория
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      # Линтинг
+      - name: Run Super-Linter for C#
+        id: lint
+        uses: super-linter/super-linter@v7.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_WORKSPACE: ./Assets/Scripts
+          VALIDATE_CSHARP: true
+          FILTER_REGEX_EXCLUDE: .*\.meta$
+        continue-on-error: true
 
       # Кэширование Unity Library
       - uses: actions/cache@v3
