@@ -27,13 +27,6 @@ jobs:
           FILTER_REGEX_EXCLUDE: .*\.meta$
         continue-on-error: true
 
-      # Освобождаем место на диске
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@v1.0.0
-        with:
-          tool-cache: true
-          large-packages: true
-
       # Кэшируем папку Library
       - name: Cache Library
         uses: actions/cache@v4
