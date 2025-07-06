@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-and-test:
-    name: Lint and Run EditMode Tests
+    name: Lint and Run Unity Tests
     runs-on: ubuntu-latest
     steps:
       # Клонируем репозиторий
@@ -38,8 +38,8 @@ jobs:
             Library-
 
       # Запускаем EditMode тесты
-      - name: Run Unity Tests
-        id: test
+      - name: Run Unity EditMode Tests
+        id: editmode-test
         uses: game-ci/unity-test-runner@v4
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -52,21 +52,19 @@ jobs:
           testMode: editmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
-          customParameters: -testResults ./test-results.xml
 
-      # Генерируем красивую сводку
-      - name: Generate Summary
-        run: |
-          echo "# Выполнение задач" >> $GITHUB_STEP_SUMMARY
-          echo "## Линтинг" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.lint.outcome }}" == "success" ]; then
-            echo "- Super-Linter для C#: ✅ Прошёл" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- Super-Linter для C#: ❌ Завалился" >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "## EditMode Тесты" >> $GITHUB_STEP_SUMMARY
-          if [ -f ./test-results.xml ] && grep -q "test-run outcome=\"Passed\"" ./test-results.xml; then
-            echo "- Unity EditMode Тесты: ✅ Прошли" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- Unity EditMode Тесты: ❌ Завалились" >> $GITHUB_STEP_SUMMARY
-          fi
+      # Запускаем PlayMode тесты (интегрированные тесты)
+      - name: Run Unity PlayMode Tests
+        id: playmode-test
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        continue-on-error: true
+        with:
+          projectPath: .
+          unityVersion: 6000.1.6f1
+          testMode: playmode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: PlayMode Test Results
