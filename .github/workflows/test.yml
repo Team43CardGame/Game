@@ -34,7 +34,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }} # Опционально для Personal License
         with:
           projectPath: .
-          unityVersion: 2022.3.10f1 # Укажи версию Unity из Project喧 ProjectSettings/ProjectVersion.txt
+          unityVersion: 6000.1.6f1 # Укажи версию Unity из Project喧 ProjectSettings/ProjectVersion.txt
           testMode: editmode # Для твоих тестов в EditMode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: EditMode Test Results
