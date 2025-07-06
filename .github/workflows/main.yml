@@ -46,7 +46,7 @@ jobs:
           customParameters: -batchmode -nographics
         id: test-unit
       - name: Upload Unit Test Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Unit-Test-Results
@@ -75,7 +75,7 @@ jobs:
           customParameters: -batchmode -nographics
         id: test-integration
       - name: Upload Integration Test Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Integration-Test-Results
@@ -104,7 +104,7 @@ jobs:
           buildsPath: build/windows
         id: build-windows
       - name: Upload Windows Build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: CardGame-Win64
           path: ${{ steps.build-windows.outputs.buildPath }}
@@ -117,38 +117,4 @@ jobs:
           files: ${{ steps.build-windows.outputs.buildPath }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  build-linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
-      - uses: game-ci/unity-builder@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          unityVersion: 6000.1.6f1
-          targetPlatform: Linux64
-          projectPath: .
-          buildName: CardGame
-          buildsPath: build/linux
-        id: build-linux
-      - name: Upload Linux Build
-        uses: actions/upload-artifact@v4
-        with:
-          name: CardGame-Linux64
-          path: ${{ steps.build-linux.outputs.buildPath }}
-      - name: Create Release and Upload Linux Build
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ github.run_number }}
-          name: CardGame-v${{ github.run_number }}-Linux64
-          files: ${{ steps.build-linux.outputs.buildPath }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+
