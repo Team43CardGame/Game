@@ -1,0 +1,9 @@
+@startuml
+[Host device] -right-( connect1
+[Client device] -up-( connect2
+[Provider] -left- connect1
+[Game manager] -right-( management
+[Host device] -left- management
+[Provider] -down- connect2
+
+@enduml

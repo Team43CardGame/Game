@@ -1,127 +1,76 @@
-# 🃏 Card Game – Multiplayer Spell Casting Game
-
-A local multiplayer card game. Players use combinations of colored cards to cast spells that can attack, defend, or trigger special effects. The project was built with a strong focus on usability, performance, and incorporating real-time customer feedback.
-
+# Epic Battle of Epic Mages - Online Card Game
 ---
 
-## 🚧 Development
+![Logo](Images/Logo.png)
 
-### Kanban Board
-
-We used a GitHub Project board to track the progress of our development during Sprint 5.
-
-🔗 [Kanban board link](https://github.com/orgs/Team43CardGame/projects/6)
-
-#### Columns and Entry Criteria:
-- No Status: Default state for new issues or items.
-- To Do: Approved issues that are ready to begin.
-- In Progress: Tasks a team member is actively working on.
-- Ready to Deploy: Feature or fix is complete and ready for deployment/testing.
-- Done: Task is tested and verified as working.
-
-### Git Workflow
-
-We followed a simple GitHub workflow suitable for small student teams.
-
-- No pull requests were used.
-- We used issues to track features, bugs, and tasks.
-- Most changes were pushed directly to the main branch.
-- Commit messages followed basic clarity and intent (e.g., fix: card color bug, feat: spell casting logic).
-
-Future improvements could include:
-- Consistent branch naming (e.g., feature/, bugfix/)
-- Conventional commit style
-- Pull request reviews
-
-### Secrets Management
-
-There are no secrets, API keys, or sensitive information used in this project.
-
+- Game for 3-6 players, where you can create spells from 3 colors cards and cast them
+- [Actual version of game](MVP2)
+- [Link to Demo Video](https://disk.yandex.ru/d/6V6_0WVCYTa-lw)
+# Projects Goals
+---
+- Create a multiplayer (At least local game) game for 3-6 players, that will be interesting and enjoyable to play
+- Make the game pleasing to the eye through visual design
+# Project Context Diagram
 ---
 
-## ✅ Quality Assurance
 
-### Quality Attribute Scenarios
-
-📄 View scenarios here: [docs/quality-assurance/quality-attribute-scenarios.md](docs/quality-assurance/quality-attribute-scenarios.md)
-
-We focused on the following three sub-characteristics from ISO 25010:
-
-#### ✅ Usability
-- Why it matters: If the gameplay is confusing or frustrating, players won’t enjoy the experience.
-- How we improved: We incorporated suggestions directly from the customer to improve flow and layout.
-- How we tested: Manual tests and customer feedback loops.
-
-#### ✅ Reliability
-- Why it matters: Game behavior must be predictable and consistent.
-- How we improved: Fixed gameplay issues based on user requirements and corrected logical errors.
-- How we tested: Used scenario-based testing with the customer’s use cases.
-
-#### ✅ Performance
-- Why it matters: Lag or bugs reduce playability and user engagement.
-- How we improved: Addressed performance bottlenecks and bugs during development.
-- How we tested: Team and customer playtests to check responsiveness and card action timing.
-
-### Automated Tests
-
-🧪 *This section will be updated once our teammate finalizes the testing setup.*
-
-### User Acceptance Tests
-
-📄 View all acceptance tests here: [docs/quality-assurance/user-acceptance-tests.md](docs/quality-assurance/user-acceptance-tests.md)
-
-#### MVP v2 User Testing
-
-- ✅ Passed tests for improved menu navigation, casting logic, and card drawing
-- 🛠 Requested improvements for:
-  - Spells using three-card combinations
-  - Visual effects when spells are cast
-
+# Roadmap
 ---
-
-## 🚀 Build and Deployment
-
-### Continuous Integration
-
-We did not use a CI/CD pipeline. All development, testing, and builds were handled manually by team members.
-
+- [X] MVP 0
+	 - [X] Main scene of the game
+	 - [X] Mechanic of turns
+	 - [X] Hot Seat game mode (Timely solution)
+	 - [X] Simulation of spell casting
+- [X] MVP 1
+	- [X] Local game mode for 2 players
+	- [X] Simple main menu
+- [X] MVP 2
+	- [X] Local game mode for 3 - 6 players
+	- [X] 2 cards spells implementation
+- [ ] MVP 2.5
+	- [ ] Drag and Drop mechanic
+ 	- [ ] Main menu
+- [ ] MVP 3 
+	- [ ] Mechanic of winning the game
+	- [ ] Spell list in game
+	- [ ] 3 cards spells implementation
+	- [ ] Sound design
+	- [ ] Animations
+ 	
+# Game Installation
+--- 
+1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2)
+2. Unzip by any method, for example on windows, **RMB** to archive **MVP2.zip**, in list chose **Extract all** and chose place for it (don't matter)
+3. Open the directory **MVP** and double click **LMB** on **CardGameMultiplayer**, the game will be lauched
+4. Also in the directory you can find **HOW_TO_LAUCH_GAME.md** with similar instruction
+# Usage insructions - How to play
 ---
-
-## 🏛 Architecture
-
-### Static View
-
-📄 See: [docs/architecture/static-view/](docs/architecture/static-view/)
-
-The architecture consists of modular components:
-- Game controller (handles card logic, state changes)
-- UI component (menu, card display)
-- Player and Game session handler
-
-We focused on:
-- Low coupling: Individual modules can be modified without breaking others
-- High cohesion: Each module performs a specific, focused function
-
-This improves maintainability and allows for future extension.
-
-### Dynamic View
-
-📄 See: [docs/architecture/dynamic-view/](docs/architecture/dynamic-view/)
-
-#### Scenario: Player joins and casts a spell
-
-1. User selects “Join Game” from the main menu
-2. Game session connects via local network
-3. Player is dealt 8 random cards of 3 colors
-4. Player places 2 cards on the table
-5. If combination matches a spell, it's cast
-6. The game engine applies effects to the target(s)
-7. 
---------------------------
-
-# **How to launch game**:
-- **1.** Use Windows OS.
-- **2** If you didn't download directory with game( name: "MVP2"), and read this file if browser, you need to download this directory.
-- **2.** Look at directory "MVP2", study files, check if number of directoryes inside is 4, number of .exe files is 2, number of .dll file is 1, and one file with instruction(such you read now). If numbers is equals, then directory was downloaded correctly, and you can continue.
-- **3.** Find "CardGameMultiplayer.exe"
-- **4.** Double-click the left mouse button on the file. After this the game will start itself.
+1. Click **START** button
+2. 1 player must click **Host Game**, all other players should click **Join Game**
+3. If you are **Host**, share your ip with other players, for it go in **cmd** and write `ipconfig`, find field **IPv4-adress** and share this ip with other players
+4. If you are **Joined player** write the received IP address in the field **IP** and click **Join**
+5. When all players are connected, **Host** can click **Proceed.** to start the game
+6. From this point the game is actually started
+7. Players turns goes one after another, in your turn you can place the card **LMB** to card in your hand and **A** or **D** to place the card in left of right part if the spell respectively and click **Pass** to pass the turn
+8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell with unique effect and then click **Pass** to pass the turn
+9. In this way game is playing, now there is no finish game mechanic, so for exit press **Alt + F4** at keybord, this is all for now
+# Documentation [Link](docs)
+---
+## All information about development in [This Contributing File](CONTRIBUTING.md)
+- Link to [Kandan board](https://github.com/orgs/Team43CardGame/projects/6)
+- Git workflow
+- Secrets management
+## Quality proof
+ - [Quality characteristics and quality attribute scenarios](docs/quality-attributes/quality-attribute-scenarios.md)
+ - [Automated tests](docs/quality-assurance/automated-tests.md)
+ - [User acceptance tests](docs/quality-assurance/user-acceptance-tests.md)
+## Build and deployment automation
+ - [Continuos Integration](docs/automation/continuous-integration.md)
+ - [Continuos Deployment](docs/automation/continuous-delivery.md)
+## [Architecture](docs/architecture/architecture.md)
+ - [Static view](docs/architecture/static-view)
+ - [Dynamic view](docs/architecture/dynamic-view)
+ - [Deployment view](docs/architecture/deployment-view)
+ - [Tech Stack](docs/architecture/architecture.md)
+## [Changelog](Changelog.md)
+## [LICENCE]()
