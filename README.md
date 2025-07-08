@@ -4,7 +4,7 @@
 ![[Logo.png]]
 
 - Game for 3-6 players, where you can create spells from 3 colors cards and cast them
-- [Actual version of game]([Game/MVP2 at main · Team43CardGame/Game](https://github.com/Team43CardGame/Game/tree/main/MVP2))
+- [Actual version of game]((https://github.com/Team43CardGame/Game/tree/main/MVP2))
 - [Link to Demo Video](https://disk.yandex.ru/d/6V6_0WVCYTa-lw)
 # Projects Goals
 ---
@@ -16,16 +16,16 @@
 
 # Roadmap
 ---
-- [ ] MVP 0
-	 - [ ] Main scene of the game
-	 - [ ] Mechanic of turns
-	 - [ ] Hot Seat game mode
-	 - [ ] Simulation of spell casting
-- [ ] MVP 1
-	- [ ] Local game mode for 2 players
-	- [ ] Simple main menu
-- [ ] MVP 2
-	- [ ] Local game mode for 3 - 6 players
+- [X] MVP 0
+	 - [X] Main scene of the game
+	 - [X] Mechanic of turns
+	 - [X] Hot Seat game mode (Timely solution)
+	 - [X] Simulation of spell casting
+- [X] MVP 1
+	- [X] Local game mode for 2 players
+	- [X] Simple main menu
+- [X] MVP 2
+	- [X] Local game mode for 3 - 6 players
 	- [ ] 2 cards spells implementation
 - [ ] MVP 3 
 	- [ ] Mechanic of winning the game
@@ -34,6 +34,7 @@
 	- [ ] 3 cards spells implementation
 	- [ ] Sound design
 	- [ ] Animations
+ 	- [ ] Drag and Drop mechanic
 # Game Installation
 --- 
 1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2)
