@@ -52,7 +52,7 @@
 7. Players turns goes one after another, in your turn you can place the card **LMB** to card in your hand and **A** or **D** to place the card in left of right part if the spell respectively and click **Pass** to pass the turn
 8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell with unique effect and then click **Pass** to pass the turn
 9. In this way game is playing, now there is no finish game mechanic, so for exit press **Alt + F4** at keybord, this is all for now
-# Documentation
+# Documentation [Link](docs)
 ---
 ## All information about development in [This File]()
 - Link to [Kandan board](https://github.com/orgs/Team43CardGame/projects/6)
@@ -60,15 +60,15 @@
 - Secrets management
 ## Quality proof
  - [Quality characteristics and quality attribute scenarios](docs/quality-attributes)
- - [Automated tests]()
- - [User acceptance tests]()
+ - [Automated tests](docs/quality-assurance/automated-tests.md)
+ - [User acceptance tests](docs/quality-assurance/user-acceptance-tests.md)
 ## Build and deployment automation
- - [Continuos Integration]()
- - [Continuos Deployment]()
+ - [Continuos Integration](docs/automation/continuous-integration.md)
+ - [Continuos Deployment](docs/automation/continuous-delivery.md)
 ## Architecture 
  - [Static view]()
  - [Dynamic view]()
  - [Deployment view]()
- - [Tech Stack]()
-## [Changelog]()
+ - [Tech Stack](docs/architecture/architecture.md)
+## [Changelog](Changelog.md)
 ## [LICENCE]()
