@@ -27,14 +27,15 @@
 - [X] MVP 2
 	- [X] Local game mode for 3 - 6 players
 	- [ ] 2 cards spells implementation
+	- [ ] Drag and Drop mechanic
+	- [ ] Main menu
 - [ ] MVP 3 
 	- [ ] Mechanic of winning the game
-	- [ ] Main menu
 	- [ ] Spell list in game
 	- [ ] 3 cards spells implementation
 	- [ ] Sound design
 	- [ ] Animations
- 	- [ ] Drag and Drop mechanic
+ 	
 # Game Installation
 --- 
 1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2)
