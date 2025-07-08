@@ -55,11 +55,11 @@
 # Documentation
 ---
 ## All information about development in [This File]()
-- Link to [Kandan board]()
+- Link to [Kandan board](https://github.com/orgs/Team43CardGame/projects/6)
 - Git workflow
 - Secrets management
 ## Quality proof
- - [Quality characteristics and quality attribute scenarios]()
+ - [Quality characteristics and quality attribute scenarios](docs/quality-attributes)
  - [Automated tests]()
  - [User acceptance tests]()
 ## Build and deployment automation
