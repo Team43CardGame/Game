@@ -60,7 +60,7 @@
 - Git workflow
 - Secrets management
 ## Quality proof
- - [Quality characteristics and quality attribute scenarios](docs/quality-attributes)
+ - [Quality characteristics and quality attribute scenarios](docs/quality-attributes/quality-attribute-scenarios.md)
  - [Automated tests](docs/quality-assurance/automated-tests.md)
  - [User acceptance tests](docs/quality-assurance/user-acceptance-tests.md)
 ## Build and deployment automation
