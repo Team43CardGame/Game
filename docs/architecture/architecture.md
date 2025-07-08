@@ -1,6 +1,6 @@
 # Architecture
 ## Static view
-![Picture]()
+![Picture](static-view/Static-View.jpg)
 - Game manager contorls the process of the game
 - It works at Host device (the player who has chosen to be the host) 
 - Clients (the other players that the host has invited to the game) connect to the Host using a provider
@@ -27,20 +27,20 @@ Refers to how well a component is focused on a single task or responsibility.
 - The modular structure ensures that bugs can be traced more easily to specific areas, and enhancements (such as switching networking backends or adding features) can be implemented incrementally.
 **Conclusion**: The design encourages long-term maintainability, scalability, and clarity — all of which are critical for iterative development and future-proofing the product.
 ## Dynamic view
-![Picture]()
+![Picture](dynamic-view/Dynamc-View.jpg)
 This picture shows the game loop, Actors are players, they do actions, send them at Server (Host), which update the game state and send it to Players (Clients)
 ### Tests
 We test this scenario and server update the states and players see the changes in **0.86 seconds**, we are happy with this result
 ## Deployment view
 The system is deployed using a peer-to-peer architecture over a local network (Wi-Fi or LAN). One of the players acts as the **Host**, running the game logic (Game Manager), while others connect as **Clients** through a shared network.
-![Picture]()
+![Picture](deployment-view/Deployment view.png)
 ### Legend:
 - Boxes: Physical devices
 - Arrows: Network connections (UDP/TCP over LAN)
 - Host: The player who starts the game
 - Clients: Other players who join the session
 ### Customer-side deployment:
-Players intall and start the game using [guide from readme]()
+Players intall and start the game using [guide from readme](https://github.com/Team43CardGame/Game/blob/1546475716d29547d642d43ba82cdef56ab282c7/README.md#game-installation)
 ## Tech Stack
 ### Game development
 - Unity
