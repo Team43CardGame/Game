@@ -33,7 +33,7 @@ This picture shows the game loop, Actors are players, they do actions, send them
 We test this scenario and server update the states and players see the changes in **0.86 seconds**, we are happy with this result
 ## Deployment view
 The system is deployed using a peer-to-peer architecture over a local network (Wi-Fi or LAN). One of the players acts as the **Host**, running the game logic (Game Manager), while others connect as **Clients** through a shared network.
-![Picture](deployment-view/Deployment view.png)
+![Picture](deployment-view/Deployment-view.png)
 ### Legend:
 - Boxes: Physical devices
 - Arrows: Network connections (UDP/TCP over LAN)
