@@ -66,10 +66,10 @@
 ## Build and deployment automation
  - [Continuos Integration](docs/automation/continuous-integration.md)
  - [Continuos Deployment](docs/automation/continuous-delivery.md)
-## Architecture 
- - [Static view]()
- - [Dynamic view]()
- - [Deployment view]()
+## [Architecture](docs/architecture/architecture.md)
+ - [Static view](docs/architecture/static-view)
+ - [Dynamic view](docs/architecture/dynamic-view)
+ - [Deployment view](docs/architecture/deployment-view)
  - [Tech Stack](docs/architecture/architecture.md)
 ## [Changelog](Changelog.md)
 ## [LICENCE]()
