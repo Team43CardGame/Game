@@ -34,7 +34,7 @@ In this column issues that passed the Acceptance criteria and were deployed
  6. Add all tasks, that we difine at Sprint Planning, to the Milestone as a issues
  7. Create branches for each feature or issue, that named clear
  8. We have no specific commit messages format, but every message must have meaning
- 9. When the issue is ready to deploy, Create a pull request using the  [template]([.github/.github/PULL_REQUEST_TEMPLATE/task.md at main · Team43CardGame/.github](https://github.com/Team43CardGame/.github/blob/main/.github/PULL_REQUEST_TEMPLATE/task.md))
+ 9. When the issue is ready to deploy, Create a pull request using the  [template](https://github.com/Team43CardGame/.github/blob/main/.github/PULL_REQUEST_TEMPLATE/task.md)
  10. Then the assigned reviewer checks the changes and approve them, Megre the PR
  11. If there any issues in merging, reviewer and one, who work in branch resolve them
 
