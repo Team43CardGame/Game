@@ -1,7 +1,7 @@
 # CONTRIBUTING
 
 ## Kanban Board
-We track our work at [This Kanban board](), actually it's a project at GitHub for our Backlog.
+We track our work at [This Kanban board](https://github.com/orgs/Team43CardGame/projects/6), actually it's a project at GitHub for our Backlog.
 ### To Do 
 In this column issues that were defined and formulated, but no one started work with them yet
 #### The Entry Criteria
@@ -39,7 +39,7 @@ In this column issues that passed the Acceptance criteria and were deployed
  11. If there any issues in merging, reviewer and one, who work in branch resolve them
 
 Git WorkFlow illustation using a Gitgraph diagram (Meramaid): 
-
+![GitGraph](Images/GitGraphIllustation.png)
 
 ## Secrets Managment 
 We use the **GITHUB_TOKEN** for GitHub Actions and some custom secrets for work with unity, also for CI/CD Pipeline : **UNITY_EMAIL** , **UNITY_LICENSE**  and **UNITY_PASSWORD**. We store them in  GitHub  Repository → Settings → Secrets and variables → Actions. So no one has acces to them.
