@@ -54,7 +54,7 @@
 9. In this way game is playing, now there is no finish game mechanic, so for exit press **Alt + F4** at keybord, this is all for now
 # Documentation [Link](docs)
 ---
-## All information about development in [This File]()
+## All information about development in [This Contributing File](CONTRIBUTING.md)
 - Link to [Kandan board](https://github.com/orgs/Team43CardGame/projects/6)
 - Git workflow
 - Secrets management
