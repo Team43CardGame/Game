@@ -12,7 +12,14 @@
 - Make the game pleasing to the eye through visual design
 # Project Context Diagram
 ---
-
+## StakeHolders
+ - Customer - Timofey Ivlenkov
+ - TA - Danila Danko
+### Target Audience
+- Students of IU or any community that can use Local Network, because our game will work at local network
+## External Systems
+- We don't use any servers or databases, all information, all data is stored on host and client devices.
+- So, we don't use any external systems
 
 # Roadmap
 ---
