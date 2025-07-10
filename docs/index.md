@@ -69,15 +69,15 @@
 - Secrets management
 ## Quality proof
  - [Quality characteristics and quality attribute scenarios](docs/quality-attributes/quality-attribute-scenarios.md)
- - [Automated tests](docs/quality-assurance/automated-tests.md)
- - [User acceptance tests](docs/quality-assurance/user-acceptance-tests.md)
+ - [Automated tests](quality-assurance/automated-tests.md)
+ - [User acceptance tests](quality-assurance/user-acceptance-tests.md)
 ## Build and deployment automation
- - [Continuos Integration](docs/automation/continuous-integration.md)
- - [Continuos Deployment](docs/automation/continuous-delivery.md)
-## [Architecture](docs/architecture/architecture.md)
- - [Static view](docs/architecture/static-view)
- - [Dynamic view](docs/architecture/dynamic-view)
- - [Deployment view](docs/architecture/deployment-view)
- - [Tech Stack](docs/architecture/architecture.md)
+ - [Continuos Integration](automation/continuous-integration.md)
+ - [Continuos Deployment](dautomation/continuous-delivery.md)
+## [Architecture](architecture/architecture.md)
+ - Static view
+ - Dynamic view
+ - Deployment view
+ - Tech Stack
 ## [Changelog](Changelog.md)
 ## [LICENCE](LICENSE.txt)
