@@ -80,4 +80,4 @@
  - [Deployment view](docs/architecture/deployment-view)
  - [Tech Stack](docs/architecture/architecture.md)
 ## [Changelog](Changelog.md)
-## [LICENCE]()
+## [LICENCE](LICENSE.txt)
