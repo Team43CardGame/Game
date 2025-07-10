@@ -1,0 +1,42 @@
+# SpellList_ENG
+**Spells with 2 Cards**  
+----
+- R + R — Chosen opponent draws a card from the deck  
+- R + B — Chosen player draws an extra card every time they are supposed to draw. The effect lasts for 1 loop or until they draw 2 extra cards  
+- R + Y — Both neighbors draw a card from the deck (What to do with 3 players?)  
+- B + B — Shield on the player for 2 loops (can block only 2 spells)  
+- B + R — Reflect — if someone tries to cast a spell on the caster, the effect is reflected but not blocked. Lasts until caster's next turn  
+- B + Y — Dispel on the caster, removes debuffs  
+- Y + Y — Chosen opponent skips their turn  
+- Y + B — Steal a card from enemy's spell, this card becomes the beginning of a new spell  
+- Y + R — Chosen player discards a card from their spell (card chosen by attacker) or draws a card from the deck if the spell is empty  
+
+**Spells with 3 Cards**  
+----
+- R + R + R — Chosen player draws 2 cards  
+- R + R + Y — Ignite – The player draws 1 card every 2 loops for 6 loops (maximum 3 cards)  
+- R + R + B — Chosen player draws 1 card every time any spell is cast. Effect lasts for 1 loop  
+- R + Y + R — A random player draws as many cards as they have in their spell  
+- R + Y + Y — Chosen player draws 2 cards, and the next 2 players (1 if fewer than 5 players), skipping the caster, each draw 1 card  
+- R + Y + B — Return a random player's spell back to their hand  
+- R + B + R — Chosen player draws 2 extra cards every time they are supposed to draw. The effect lasts until their next turn or until they draw 4 cards  
+- R + B + Y — Random 3-card spell is cast (if the target is an enemy, they are also chosen randomly)  
+- R + B + B — Choose a player to draw a card; all their buffs are removed ?? Removes even shields, but reflect still works against this spell  
+- B + B + B — Shield on the player for 4 loops, can block 3 spells ??  
+- B + Y + B — Buff that allows the caster to perform 2 actions per turn, but they draw 1 card for each extra action. Effect ends if they become the target of a spell (if the caster has a shield — the effect stays). Also ends if the player only performs one action during their turn  
+- B + B + Y — Smart Shield — the caster decides whether to block a spell or not. Lasts until one spell is blocked (P.S. In reality, no one will attack you for no reason, just like with other shields)  
+- B + B + R — Absolute Vision — the caster can see all players’ hands for 3 loops or until they become the target of a spell. Also removes debuffs  
+- B + R + B — Absolute Reflect — if someone casts a spell on the caster, it is both reflected and blocked. Lasts for 2(3) loops or until the first reflection  
+- B + R + Y — Replaces the chosen player’s spell with a random one (same number of cards), and they draw a card  
+- B + Y + R — Reverses the turn order; the caster starts a new loop  
+- B + Y + Y — Dispels all effects from all players. For each effect removed, the player draws a card, except the caster (Does it bypass shields?)  
+- B + R + R — Caster’s next spell is hidden from other players; caster immediately places one card into the spell  
+- Y + Y + Y — Chosen player (or 2 players — the second is next in turn order, skipping the caster — if more than 4 players) skip 2 turns  
+- Y + R + Y — All players discard 1 random card from their spell  
+- Y + Y + R — Chosen player draws a card and skips a turn  
+- Y + B + Y — Destroys all shields of all types and strengths for all players  
+- Y + Y + B — Chosen player and their neighbors skip 1 turn  
+- Y + R + R — The chosen player's hand becomes visible to all other players for 2 loops, and they draw a card  
+- Y + B + B — Buff that allows the caster to take a turn out of order every time they become the target of a spell. Lasts for 4 loops or 2 activations  
+- Y + R + B — Blindness — chosen player cannot see enemy spells for 4 loops (or until they cast a spell or become the target of a spell). May draw a card  
+- Y + B + R — Steal the entire enemy spell; it becomes the caster’s spell. Victim draws a card  
