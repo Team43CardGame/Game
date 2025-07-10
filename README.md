@@ -1,11 +1,12 @@
 # Epic Battle of Epic Mages - Online Card Game
 ---
 
-![Logo](Images/Logo.png)
+![Logo](docs/Images/Logo.png)
 
 - Game for 3-6 players, where you can create spells from 3 colors cards and cast them
 - [Actual version of game](MVP2)
 - [Link to Demo Video](https://disk.yandex.ru/d/6V6_0WVCYTa-lw)
+# [Githab Pages](https://team43cardgame.github.io/Game/)
 # Projects Goals
 ---
 - Create a multiplayer (At least local game) game for 3-6 players, that will be interesting and enjoyable to play
