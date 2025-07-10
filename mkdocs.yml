@@ -3,6 +3,8 @@ site_url: https://Team43CardGame.github.io/Game/
 docs_dir: docs
 theme:
   name: material
+markdown_extensions:
+  - tasklist
 nav:
   - Readme: index.md
   - Documentation:
