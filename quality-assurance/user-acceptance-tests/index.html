@@ -376,6 +376,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    User acceptance tests
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -387,6 +400,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#local-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local game
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moving cards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-version-of-casting-spells" class="md-nav__link">
+    <span class="md-ellipsis">
+      Demo version of casting spells
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -612,6 +671,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#local-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local game
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moving cards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-version-of-casting-spells" class="md-nav__link">
+    <span class="md-ellipsis">
+      Demo version of casting spells
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -628,36 +722,24 @@
 
 <h1 id="user-acceptance-tests">User Acceptance Tests</h1>
 <p>These are tests in the format of acceptance criteria:</p>
-<ol>
-<li>
-<p><strong>Local game</strong></p>
-</li>
-<li>
-<p>GIVEN Join and host buttons  </p>
-</li>
-<li>WHEN Player tries to join one lobby using host and join buttons  </li>
-<li>
-<p>THEN They come to one game-room</p>
-</li>
-<li>
-<p><strong>Moving cards</strong></p>
-</li>
-<li>
-<p>GIVEN Cards in hand  </p>
-</li>
-<li>WHEN Player chooses a card and a position for it in the spell-preparing area  </li>
-<li>
-<p>THEN Card moves to the spell-preparing area</p>
-</li>
-<li>
-<p><strong>Demo version of casting spells</strong></p>
-</li>
-<li>
-<p>GIVEN Cards on the table and cast button  </p>
-</li>
-<li>WHEN Player places 2 or 3 cards and presses the cast button  </li>
-<li>THEN Effect is performed and cards are removed from the table</li>
-</ol>
+<h2 id="local-game">Local game</h2>
+<ul>
+<li><strong>GIVEN</strong> Join and host buttons</li>
+<li><strong>WHEN</strong> Player tries to join one lobby using host and join buttons</li>
+<li><strong>THEN</strong> They come to one game-room</li>
+</ul>
+<h2 id="moving-cards">Moving cards</h2>
+<ul>
+<li><strong>GIVEN</strong> Cards in hand</li>
+<li><strong>WHEN</strong> Player chooses a card and a position for it in the spell-preparing area</li>
+<li><strong>THEN</strong> Card moves to the spell-preparing area</li>
+</ul>
+<h2 id="demo-version-of-casting-spells">Demo version of casting spells</h2>
+<ul>
+<li><strong>GIVEN</strong> Cards on the table and cast button</li>
+<li><strong>WHEN</strong> Player places 2 or 3 cards and presses the cast button</li>
+<li><strong>THEN</strong> Effect is performed and cards are removed from the table</li>
+</ul>
 
 
 
