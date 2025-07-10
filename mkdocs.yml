@@ -1,0 +1,22 @@
+site_name: Card Game Documentation
+site_url: https://Team43CardGame.github.io/Game/
+docs_dir: docs
+theme:
+  name: material
+nav:
+  - Readme: index.md
+  - Documentation:
+    - Development: CONTRIBUTING.md
+    - Quality proof: 
+      - Quality attribute scenarios: quality-attributes/quality-attribute-scenarios.md
+      - Automated tests: quality-assurance/automated-tests.md
+      - User acceptance tests: quality-assurance/user-acceptance-tests.md
+    - Build and Deployment automation: 
+      - Continuos Integration: automation/continuous-integration.md
+      - Continuous Delivery: automation/continuous-delivery.md
+    - Architecture:
+      - Overview: architecture/architecture.md
+      - Static View: architecture/static-view/index.md
+      - Deployment View: architecture/deployment-view/index.md
+      - Dynamic View: architecture/dynamic-view/index.md
+    - Changelog: Changelog.md
