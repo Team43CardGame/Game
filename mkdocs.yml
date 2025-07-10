@@ -16,7 +16,4 @@ nav:
       - Continuous Delivery: automation/continuous-delivery.md
     - Architecture:
       - Overview: architecture/architecture.md
-      - Static View: architecture/static-view/index.md
-      - Deployment View: architecture/deployment-view/index.md
-      - Dynamic View: architecture/dynamic-view/index.md
     - Changelog: Changelog.md
