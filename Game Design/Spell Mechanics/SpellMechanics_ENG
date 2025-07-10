@@ -1,0 +1,35 @@
+# SpellMechanics_RU
+- Draw a card *(suggested by client)*  
+- Skip a turn *(suggested by client)*  
+
+- Buffs  
+	- Shield that reflects an attack: both you and the attacker draw a card from the deck 
+	- Shield that reflects a stun: both you and the attacker skip the required number of turns  
+	- Shield that neutralizes the effect: simply destroys the enemy's spell 
+	- Ability to perform 2 actions per turn, but draw a card from the deck for each such action *(suggested by client)*  
+	- See all opponents’ hands  
+	- Smart shield: choose whether to block a spell or not *(suggested by client)* 
+	- Hide your own spell  
+	- Absolute vision — the caster sees all players' hands  
+	- Ability to act out of turn every time the caster becomes a target of a spell  
+
+- Debuffs  
+	- Draw an extra card every time you’re supposed to draw *(suggested by client)*  
+	- Every time someone casts a spell, you draw a card  
+	- Your hand is revealed to the caster or to all players  
+	- Blind enemy spells (like blindness — the target still sees their own hand and spell)  
+
+- Interactions with a spell on the table  
+	- Steal a card into your spell *(suggested by client)*  
+	- Remove a card from a spell *(suggested by client)*  
+	- Modify a spell  
+	- Swap spells between players  
+	- Return a spell to the player's hand  
+
+- Dispel *(suggested by client)*  
+	- Buffs  
+	- Debuffs  
+	- Everything  
+- Reverse the turn order  
+- Draw as many cards as you have in your spell  
+- Destroy all shields  
