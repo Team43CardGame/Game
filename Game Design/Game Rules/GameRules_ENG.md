@@ -1,9 +1,13 @@
-# GameRules_ENG
-- Game for 3–6 players.  
-- There is a deck with ? cards. Each player starts with 8 cards, randomly selected from the deck.  
-- (Card distribution: Red 50%, Yellow 30%, Blue 20% — subject to change during game balancing)  
-- It’s a turn-based game: players take turns one after another.  
-- The goal of the game is to get rid of all your cards.  
-- There is a hand (cards only visible to the player) and a spell (cards on the table next to the player, visible to everyone).  
-- On each turn, a player may add one card to the spell (to the left or right side) or cast the spell and activate a special effect, for example: the chosen opponent draws a card.  
-- Skipping a turn is not allowed.
+# GameRules_EN
+
+- The game is for 3–6 players, but rules are balanced for 5–6 players  
+- The deck consists of 100 cards in three colors: Red — Fire, Yellow — Lightning, Blue — Water  
+- At the start of the game, the deck is shuffled, and each player draws 8 cards  
+- Card distribution: Red 50%, Yellow 30%, Blue 20%  
+- This is a turn-based game: players take turns in sequence  
+- The goal is to get rid of all your cards  
+- Each player has a hand (hidden cards) and a spell (cards placed face-up in front of them)  
+- On each turn, a player may either:  
+  - Add one card to their spell (on the left or right), **or**  
+  - Cast the spell to activate a special effect, e.g., "target player draws a card"  
+- Skipping a turn voluntarily is not allowed  
