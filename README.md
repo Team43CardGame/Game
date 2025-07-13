@@ -12,7 +12,7 @@
 
 - [Actual version of game](MVP2_5Windows)
 
-- [Link to Demo Video](https://disk.yandex.ru/d/6V6_0WVCYTa-lw)
+- [Link to Demo Video](https://disk.yandex.ru/i/iuFwUGk8S7sWPw)
 
 # [Githab Pages](https://team43cardgame.github.io/Game/)
 
@@ -50,37 +50,37 @@
 
 ---
 
-- [X] MVP 0
+- [x] MVP 0
 
-     - [X] Main scene of the game
+     - [x] Main scene of the game
 
-     - [X] Mechanic of turns
+     - [x] Mechanic of turns
 
-     - [X] Hot Seat game mode (Timely solution)
+     - [x] Hot Seat game mode (Timely solution)
 
-     - [X] Simulation of spell casting
+     - [x] Simulation of spell casting
 
-- [X] MVP 1
+- [x] MVP 1
 
-    - [X] Local game mode for 2 players
+    - [x] Local game mode for 2 players
 
-    - [X] Simple main menu
+    - [x] Simple main menu
 
-    - [X] Visual Design
+    - [x] Visual Design
 
-    - [X] UI/UX Design
+    - [x] UI/UX Design
 
-- [X] MVP 2
+- [x] MVP 2
 
-    - [X] Local game mode for 3 - 6 players
+    - [x] Local game mode for 3 - 6 players
 
-    - [X] 2 cards spells implementation
+    - [x] 2 cards spells implementation
 
-- [X] MVP 2.5
+- [x] MVP 2.5
 
-    - [X] Drag and Drop mechanic
+    - [x] Drag and Drop mechanic
 
-    - [X] Main menu
+    - [x] Main menu
 
 - [ ] MVP 3
 
@@ -98,7 +98,7 @@
 
 ---
 ## Windows
-1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2)
+1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2_5Windows)
 
 2. Unzip by any method, for example **RMB** to archive **MVP2_5Windows.zip**, in list chose **Extract all** and chose place for it (don't matter)
 
@@ -120,7 +120,7 @@
 
 2. 1 player must click **Host Game**, all other players should click **Join Game**
 
-3. If you are **Host**, share your ip with other players, for it go in **cmd** and write `ipconfig`, find field **IPv4-adress** and share this ip with other players
+3. If you are **Host**, share the numbers from your screen with other players 
 
 4. If you are **Joined player** write the received IP address in the field **IP** and click **Join**
 
@@ -128,9 +128,9 @@
 
 6. From this point the game is actually started
 
-7. Players turns goes one after another, in your turn you can place the card **LMB** to card in your hand and **A** or **D** to place the card in left of right part if the spell respectively and click **Pass** to pass the turn
+7. Players turns goes one after another, in your turn you can place the card using drag-and-drop and click **Pass** to pass the turn
 
-8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell with unique effect and then click **Pass** to pass the turn
+8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell and click on target, then click **Pass** to pass the turn
 
 9. In this way game is playing, now there is no finish game mechanic, so for exit press **Alt + F4** at keybord, this is all for now
 
