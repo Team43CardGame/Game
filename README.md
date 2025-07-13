@@ -63,11 +63,8 @@
 - [x] MVP 1
 
     - [x] Local game mode for 2 players
-
     - [x] Simple main menu
-
     - [x] Visual Design
-
     - [x] UI/UX Design
 
 - [x] MVP 2
