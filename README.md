@@ -35,9 +35,9 @@
 - [X] MVP 2
 	- [X] Local game mode for 3 - 6 players
 	- [X] 2 cards spells implementation
-- [ ] MVP 2.5
-	- [ ] Drag and Drop mechanic
- 	- [ ] Main menu
+- [X] MVP 2.5
+	- [X] Drag and Drop mechanic
+ 	- [X] Main menu
 - [ ] MVP 3 
 	- [ ] Mechanic of winning the game
 	- [ ] Spell list in game
