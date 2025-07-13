@@ -24,36 +24,27 @@
 # Roadmap
 ---
 - [x] MVP 0
-
-     - [x] Main scene of the game
-
-     - [x] Mechanic of turns
-
-     - [x] Hot Seat game mode (Timely solution)
-
-     - [x] Simulation of spell casting
-
+  - [x] Main scene of the game
+  - [x] Mechanic of turns
+  - [x] Hot Seat game mode (Timely solution)
+  - [x] Simulation of spell casting
 - [x] MVP 1
-
-    - [x] Local game mode for 2 players
-
-    - [x] Simple main menu
-
-    - [x] Visual Design
-
-    - [x] UI/UX Design
-
+  - [x] Local game mode for 2 players
+  - [x] Simple main menu
+  - [x] Visual Design
+  - [x] UI/UX Design
 - [x] MVP 2
-
-    - [x] Local game mode for 3 - 6 players
-
-    - [x] 2 cards spells implementation
-
+  - [x] Local game mode for 3 - 6 players
+  - [x] 2 cards spells implementation
 - [x] MVP 2.5
-
-    - [x] Drag and Drop mechanic
-
-    - [x] Main menu
+  - [x] Drag and Drop mechanic
+  - [x] Main menu
+- [ ] MVP 3
+  - [ ] Mechanic of winning the game
+  - [ ] Spell list in game
+  - [ ] 3 cards spells implementation
+  - [ ] Sound design
+  - [ ] Animations
     
 # Game Installation
 --- 
@@ -77,12 +68,12 @@
 ---
 1. Click **START** button
 2. 1 player must click **Host Game**, all other players should click **Join Game**
-3. If you are **Host**, share your ip with other players, for it go in **cmd** and write `ipconfig`, find field **IPv4-adress** and share this ip with other players
+3. If you are **Host**, share the numbers from your screen with other players 
 4. If you are **Joined player** write the received IP address in the field **IP** and click **Join**
 5. When all players are connected, **Host** can click **Proceed.** to start the game
 6. From this point the game is actually started
-7. Players turns goes one after another, in your turn you can place the card **LMB** to card in your hand and **A** or **D** to place the card in left of right part if the spell respectively and click **Pass** to pass the turn
-8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell with unique effect and then click **Pass** to pass the turn
+7. Players turns goes one after another, in your turn you can place the card using drag-and-drop and click **Pass** to pass the turn
+8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell and click on target, then click **Pass** to pass the turn
 9. In this way game is playing, now there is no finish game mechanic, so for exit press **Alt + F4** at keybord, this is all for now
 # Documentation [Link](docs)
 ---
