@@ -22,30 +22,31 @@
 - So, we don't use any external systems
 
 # Roadmap
+
 ---
+
 - [x] MVP 0
-   - [x] Main scene of the game
-   - [x] Mechanic of turns
-   - [x] Hot Seat game mode (Timely solution)
-   - [x] Simulation of spell casting
+  - [x] Main scene of the game
+  - [x] Mechanic of turns
+  - [x] Hot Seat game mode (Timely solution)
+  - [x] Simulation of spell casting
 - [x] MVP 1
-   - [x] Local game mode for 2 players
-   - [x] Simple main menu
-   - [x] Visual Design
-   - [x] UI/UX Design
+  - [x] Local game mode for 2 players
+  - [x] Simple main menu
+  - [x] Visual Design
+  - [x] UI/UX Design
 - [x] MVP 2
-   - [x] Local game mode for 3 - 6 players
-   - [x] 2 cards spells implementation
+  - [x] Local game mode for 3 - 6 players
+  - [x] 2 cards spells implementation
 - [x] MVP 2.5
-   - [x] Drag and Drop mechanic
-   - [x] Main menu
+  - [x] Drag and Drop mechanic
+  - [x] Main menu
 - [ ] MVP 3
   - [ ] Mechanic of winning the game
   - [ ] Spell list in game
   - [ ] 3 cards spells implementation
   - [ ] Sound design
   - [ ] Animations
-    
 # Game Installation
 --- 
 ## Windows
