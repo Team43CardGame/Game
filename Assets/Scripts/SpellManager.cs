@@ -20,61 +20,61 @@ public class SpellManager : MonoBehaviour
             {
                 {
                 "TakeCard",
-                "NULL",
-                "NULL",
-                "NULL"
+                "SuperTakeCard",
+                "NULLSpell",
+                "NULLSpell"
                 },
                 {
                 "NeighboursTakeCard",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 },
                 {
                 "TakeAdditionalCard",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 }
             },
             {
                 {
                 "DiscardCard",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 },
                 {
                 "SkipTurn",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 },
                 {
                 "StealCard",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 }
             },
             {
                 {
                 "Reflect",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 },
                 {
                 "ClearEffects",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "NULLSpell"
                 },
                 {
                 "ShieldSpell",
-                "NULL",
-                "NULL",
-                "NULL"
+                "NULLSpell",
+                "NULLSpell",
+                "SuperBlock"
                 }
             }
         };
@@ -106,7 +106,7 @@ public class SpellManager : MonoBehaviour
 
         foreach (SpellEffect spell in playerEffects)
         {
-            spell.OnTurn(spell);
+            spell.OnTurn();
         }
 
         gameManager.SetEffectsOnPlayer(index, playerEffects);
@@ -114,13 +114,19 @@ public class SpellManager : MonoBehaviour
         this.DeleteEndedSpells(index);
     }
 
-    public void CreateSpell(int index, int[] playerCards)
+    public void InstantiateSpell(int index, int[] playerCards)
     {
         SpellEffect newSpell = (SpellEffect)ScriptableObject.CreateInstance(this.effectsArray[playerCards[0] - 1, playerCards[1] - 1, playerCards[2]]);
-        int[] targets = gameManager.GetTargets(index, newSpell.GetTargetsNumber());
-        newSpell.InitializeSpell(index, targets, this);
+        gameManager.GetTargets(index, newSpell);
+    }
 
-        this.HandleNewSpell(newSpell, index, targets);
+    public void InitializeSpell(SpellEffect spell, int caster, int[] targets)
+    {
+        spell.InitializeSpell(caster, targets, this);
+
+        gameManager.ClearPrepOfAPlayer(caster);
+
+        this.HandleNewSpell(spell, caster, targets);
     }
     void HandleNewSpell(SpellEffect newSpell, int index, int[] targets)
     {
@@ -128,7 +134,7 @@ public class SpellManager : MonoBehaviour
         {
             SpellEffect spellAfterHandling = this.TraverseEffectsOnHit(newSpell, target);
 
-            spellAfterHandling.OnCast(spellAfterHandling);
+            spellAfterHandling.OnCast();
 
             gameManager.AddEffect(target, spellAfterHandling);
 

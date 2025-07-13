@@ -2,28 +2,31 @@ using UnityEngine;
 using Unity.Netcode;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 public class Player : NetworkBehaviour
 {
     [SerializeField] int id;                                // Player's ID.
-    public           int ID { get { return id; } }
+    public int ID { get { return id; } }
     [SerializeField] bool turn;                             // Determines wether its player's turn or not
-    public           bool Turn { get { return turn; } }     // Getter for read-only
+    public bool Turn { get { return turn; } }     // Getter for read-only
     [SerializeField] int maxMoves = 1;                      // Moves per turn
-    public           int remainingMoves;                    // Counter of remaining moves
-    public           int selected = -1;                     // Color of selected card
+    public int remainingMoves;                    // Counter of remaining moves
+    public int selected = -1;                     // Color of selected card
     // COLOR 0-1-2 r-y-b
 
     [Space(20)]
 
-    [SerializeField] public HandScript handScript;                 // Hand's script.
-    public           PrepRenderer prepRenderer;               // ALL preps' renderer script.
-    
+    [SerializeField] HandScript handScript;                 // Hand's script.
+    public PrepRenderer prepRenderer;               // ALL preps' renderer script.
+
     [Space(20)]
 
     [SerializeField] public GameObject deckPrefab;          // Prefab of a card to instantiate
-    public           int[] handCards;                       // Array of cards in each Deck in Hand
+    public int[] handCards;                       // Array of cards in each Deck in Hand
+
+    int[] targetsIndexes;                                   // Array of current targets for current cast
 
     void Awake()
     // On spawn gets HS and ERS
@@ -41,7 +44,7 @@ public class Player : NetworkBehaviour
     void Update()
     // Add LandCard(selected) on A/D if `selected` is set
     {
-        if(!prepRenderer)
+        if (!prepRenderer)
             prepRenderer = GameObject.FindWithTag("Preper").GetComponent<PrepRenderer>();
 
         //Debug.Log(GetComponent<NetworkObject>().IsSpawned);
@@ -51,22 +54,8 @@ public class Player : NetworkBehaviour
         }
 
         // if (!IsOwner) return;
-
-        if (selected == -1) return;
-
-        if (Input.GetKeyDown(KeyCode.A) && turn)
-        {
-            MoveCardServerRpc(selected, id, true);
-            selected = -1;
-            remainingMoves--;
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && turn)
-        {
-            MoveCardServerRpc(selected, id, false);
-            selected = -1;
-            remainingMoves--;
-        }
     }
+
 
     public void SetId(int id)
     // Sets ID.
@@ -83,11 +72,14 @@ public class Player : NetworkBehaviour
     public void TakeTurn(bool turn)
     // Start of this player's turn
     {
-        this.turn = turn;
-        remainingMoves = turn ? maxMoves : 0;
+        if (this.turn != turn)
+        {
+            this.turn = turn;
+            remainingMoves = turn ? maxMoves : 0; 
+        }
     }
 
-    public void SetCards(int[] newHandCards)
+    void SetCards(int[] newHandCards)
     // Sets Decks to player and passes on to Hand 
     {
         handCards = new int[newHandCards.Length];
@@ -97,12 +89,17 @@ public class Player : NetworkBehaviour
     }
 
 
+    public void MoveCard(int color, bool left)
+    {
+        MoveCardServerRpc(color, id, left);
+    }
+
     [ServerRpc(RequireOwnership = false)]
-    public void MoveCardServerRpc(int color, int id, bool left, ServerRpcParams rpcParams = default)
+    void MoveCardServerRpc(int color, int id, bool left, ServerRpcParams rpcParams = default)
     // ARGUMENT COLOR 0-1-2 R-Y-B
     {
         ulong senderId = rpcParams.Receive.SenderClientId;
-    
+
         // Validate sender exists
         if (!NetworkManager.Singleton.ConnectedClients.ContainsKey(senderId))
         {
@@ -131,7 +128,6 @@ public class Player : NetworkBehaviour
         if (Turn)
         {
             this.CastServerRpc(this.id);
-            remainingMoves--;
         }
     }
 
@@ -156,10 +152,6 @@ public class Player : NetworkBehaviour
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().NewTurn();
     }
 
-    public void Select(int color)
-    {
-        selected = color;
-    }
 
     public void Kill(int id)
     {
@@ -172,5 +164,62 @@ public class Player : NetworkBehaviour
     void OnDestroy()
     {
         // Debug.Log("OOOOOOOOAAAAAAAAAAAAAHHH");
+    }
+
+    public void ChangeActionsLeft(int change)
+    {
+        this.remainingMoves += change;
+        Debug.Log(change);
+    }
+
+    public void AddTarget(int index)
+    {
+        if (this.targetsIndexes == null) return;
+        int minIndex = 1000;
+        for (int i = 0; i < this.targetsIndexes.Length; i++)
+        {
+            if (targetsIndexes[i] == index)
+            {
+                return;
+            }
+            if (targetsIndexes[i] == -1 && i < minIndex)
+            {
+                minIndex = i;
+            }
+        }
+        if (minIndex == 1000) return;
+        targetsIndexes[minIndex] = index;
+    }
+
+    public void ChooseTargts(int N)
+    {
+        InitializeTargetsArray(N);
+
+        StartCoroutine(WaitUntilTargetsArrayIsFull(N));
+    }
+
+    void InitializeTargetsArray(int N)
+    {
+        this.targetsIndexes = new int[N];
+        for (int i = 0; i < N; i++)
+        {
+            targetsIndexes[i] = -1;
+        }
+    }
+
+    IEnumerator WaitUntilTargetsArrayIsFull(int N)
+    {
+        yield return new WaitUntil(() => this.targetsIndexes[N - 1] != -1);
+
+        SetTargetsIndexesOnServerServerRpc(targetsIndexes);
+
+        targetsIndexes = null;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetTargetsIndexesOnServerServerRpc(int[] targets, ServerRpcParams rpcParams = default)
+    // unfinished Turn End RPC
+    {
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().AcceptTargetsFromPlayer(targets);
     }
 }

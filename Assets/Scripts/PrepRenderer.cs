@@ -15,6 +15,7 @@ public class PrepRenderer : MonoBehaviour
     [SerializeField] GameObject[] Breps;
     [SerializeField] GameObject prepPrefab;
 
+    [SerializeField] GameObject turner;
     public void Awake()
     {
         prepCount = NetworkManager.Singleton.ConnectedClientsIds.Count;
@@ -23,9 +24,9 @@ public class PrepRenderer : MonoBehaviour
         {
             new Vector3(0f, -3f, 0f),       // YOU
             new Vector3(-6f, 0f, -90f),     // LEFT
-            new Vector3(-6f, 3f, 180f),     // OPPOSITE LEFT
-            new Vector3(0f, 3f, 180f),      // OPPOSITE CENTER
-            new Vector3(6f, 3f, 180f),      // OPPOSITE RIGHT
+            new Vector3(-6f, 3f, 0f),     // OPPOSITE LEFT
+            new Vector3(0f, 3f, 0f),      // OPPOSITE CENTER
+            new Vector3(6f, 3f, 0f),      // OPPOSITE RIGHT
             new Vector3(6f, 0f, 90f)        // RIGHT
         };
         Vector3 empty = new Vector3(0f, 0f, 0f);
@@ -39,6 +40,7 @@ public class PrepRenderer : MonoBehaviour
         };
         prepCards = new int[prepCount, 3];
         // Debug.Log(prepCards.GetLength(0) + ";   " + prepCards.GetLength(1));
+        turner = GameObject.FindWithTag("turner");
 
     }
 
@@ -71,7 +73,7 @@ public class PrepRenderer : MonoBehaviour
     int shift(int i) {
         return (prepCount * 2 - playerId + i) % prepCount;
     }
-    public void Demonstrate()
+    public void Demonstrate(int order)
     {
         //Debug.Log("Hey!");
         Breps = new GameObject[prepCount];
@@ -83,10 +85,17 @@ public class PrepRenderer : MonoBehaviour
                 basePos[prepCount - 1, shift(i)].y,
                 0f
             );
-        
+
+            if (i == order)
+            {
+                turner.transform.position = Breps[i].transform.position;
+            }
+
+
             Breps[i].transform.rotation = Quaternion.Euler(0f, 0f, basePos[prepCount - 1, shift(i)].z);
 
-            Breps[i].GetComponent<PrepScript>().SetCards(new int[]{prepCards[i, 0],prepCards[i, 1],prepCards[i, 2]});
+            Breps[i].GetComponent<PrepScript>().SetCards(new int[] { prepCards[i, 0], prepCards[i, 1], prepCards[i, 2] });
+            Breps[i].GetComponent<PrepScript>().id = i;
         }
     }
     
