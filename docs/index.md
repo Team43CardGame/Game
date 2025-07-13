@@ -4,8 +4,8 @@
 ![Logo](Images/Logo.png)
 
 - Game for 3-6 players, where you can create spells from 3 colors cards and cast them
-- [Actual version of game](MVP2)
-- [Link to Demo Video](https://disk.yandex.ru/d/6V6_0WVCYTa-lw)
+- [Actual version of game](MVP2_5Windows)
+- [Link to Demo Video](https://disk.yandex.ru/i/iuFwUGk8S7sWPw)
 # Projects Goals
 ---
 - Create a multiplayer (At least local game) game for 3-6 players, that will be interesting and enjoyable to play
@@ -31,6 +31,8 @@
 - [X] MVP 1
     - [X] Local game mode for 2 players
     - [X] Simple main menu
+    - [X] Visual Design
+    - [X] UI/UX Design
 - [X] MVP 2
     - [X] Local game mode for 3 - 6 players
     - [X] 2 cards spells implementation
@@ -46,10 +48,22 @@
     
 # Game Installation
 --- 
-1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2)
-2. Unzip by any method, for example on windows, **RMB** to archive **MVP2.zip**, in list chose **Extract all** and chose place for it (don't matter)
+## Windows
+1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2_5Windows)
+
+2. Unzip by any method, for example **RMB** to archive **MVP2_5Windows.zip**, in list chose **Extract all** and chose place for it (don't matter)
+
 3. Open the directory **MVP** and double click **LMB** on **CardGameMultiplayer**, the game will be lauched
+
 4. Also in the directory you can find **HOW_TO_LAUCH_GAME.md** with similar instruction
+## Linux
+### Instruction for Mint
+1. To download the archive of game click: [Dowload the Game](https://disk.yandex.ru/d/8sWujZrfRDXbBg)
+
+2. Unzip by any method, for example on windows, **RMB** to archive **MVP2.zip**, in list chose **Extract**
+
+3. Click **LMB** on **WEEK 6 MVP.x86_64**, the game will be lauched
+
 # Usage insructions - How to play
 ---
 1. Click **START** button
@@ -68,12 +82,12 @@
 - Git workflow
 - Secrets management
 ## Quality proof
- - [Quality characteristics and quality attribute scenarios](docs/quality-attributes/quality-attribute-scenarios.md)
+ - [Quality characteristics and quality attribute scenarios](quality-attributes/quality-attribute-scenarios.md)
  - [Automated tests](quality-assurance/automated-tests.md)
  - [User acceptance tests](quality-assurance/user-acceptance-tests.md)
 ## Build and deployment automation
  - [Continuos Integration](automation/continuous-integration.md)
- - [Continuos Deployment](dautomation/continuous-delivery.md)
+ - [Continuos Deployment](automation/continuous-delivery.md)
 ## [Architecture](architecture/architecture.md)
  - Static view
  - Dynamic view
