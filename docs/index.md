@@ -4,7 +4,7 @@
 ![Logo](Images/Logo.png)
 
 - Game for 3-6 players, where you can create spells from 3 colors cards and cast them
-- [Actual version of game](MVP2_5Windows)
+- [Actual version of game](https://github.com/Team43CardGame/Game/tree/01b17ad110dcdf768dbb0fcc5c64311acf459dd9/MVP2_5Windows)
 - [Link to Demo Video](https://disk.yandex.ru/i/iuFwUGk8S7sWPw)
 # Projects Goals
 ---
