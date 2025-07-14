@@ -72,7 +72,17 @@
   - [ ] 3 cards spells implementation
   - [ ] Sound design
   - [ ] Animations
-
+- [ ] MVP 4
+  - [ ] Ability to choose name
+  - [ ] Tutorial
+  - [ ] Custom avatars
+  - [ ] List of available lobbies
+- [ ] MVP 5
+  - [ ] Online game mode
+  - [ ] Android port
+  - [ ] Skins for cards and table
+  - [ ] Matchmaking
+# Game Installa
 
 # Game Installation
 
@@ -151,5 +161,6 @@
  - [Tech Stack](docs/architecture/architecture.md)
 
 ## [Changelog](Changelog.md)
+## [AI usage](docs/reports/ai-usage.md)
 
 ## [LICENCE](LICENSE.txt)
