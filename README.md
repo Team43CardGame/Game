@@ -73,15 +73,16 @@
   - [ ] Sound design
   - [ ] Animations
 - [ ] MVP 4
-  - [ ] Ability to choose name
-  - [ ] Tutorial
-  - [ ] Custom avatars
-  - [ ] List of available lobbies
+  - [ ] Ability to choose name
+  - [ ] Tutorial
+  - [ ] Custom avatars
+  - [ ] List of available lobbies
 - [ ] MVP 5
-  - [ ] Online game mode
-  - [ ] Android port
-  - [ ] Skins for cards and table
-  - [ ] Matchmaking
+  - [ ] Online game mode
+  - [ ] Android port
+  - [ ] Skins for cards and table
+  - [ ] Matchmaking
+
 # Game Installa
 
 # Game Installation
