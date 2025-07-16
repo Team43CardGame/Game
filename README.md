@@ -129,7 +129,7 @@
 
 ---
 
-## All information about development in [This Contributing File](CONTRIBUTING.md)
+## All information about development in [This Contributing File](docs/CONTRIBUTING.md)
 
 - Link to [Kandan board](https://github.com/orgs/Team43CardGame/projects/6)
 
