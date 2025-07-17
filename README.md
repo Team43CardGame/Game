@@ -72,18 +72,21 @@
   - [ ] 3 cards spells implementation
   - [ ] Sound design
   - [ ] Animations
-- [ ] MVP 4
+  - [ ] List of connected payers
+  - [ ] Auto-pass turn
+  - [ ] Disable the ability to start a game with less 
+  than 3 players
   - [ ] Ability to choose name
+- [ ] MVP 4
   - [ ] Tutorial
   - [ ] Custom avatars
   - [ ] List of available lobbies
+  - [ ] Explicit indication of spell results for all players
 - [ ] MVP 5
   - [ ] Online game mode
   - [ ] Android port
   - [ ] Skins for cards and table
   - [ ] Matchmaking
-
-# Game Installa
 
 # Game Installation
 

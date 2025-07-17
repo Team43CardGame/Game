@@ -1,5 +1,5 @@
 ## The game is balanced for 5–6 players, but there's nothing stopping you from playing with three  
-## **V_3 Spells from 2 Cards**  
+## **V_4 Spells from 2 Cards**  
 
 ----
 
@@ -21,7 +21,7 @@
 
 - B + B — Shield on a player for 2 rounds (can block up to 2 spells)  
 
-## **V_3 Spells from 3 Cards**  
+## **V_4 Spells from 3 Cards**  
 
 ----
 

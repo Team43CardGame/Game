@@ -15,6 +15,7 @@
 - Help with GitHub pages - Guide how to do it
 - Translation of game design into English
 ## Assignment (week) 7
-- Checking the Readme for compliance with requirements
+- Script for inno setup, for creating the setup.exe file
+- Draft version of interview transcription
 ## Overview
 - AI was never used as a "ready-made solution to the problem", only as an assistant, advisor, inspirer
