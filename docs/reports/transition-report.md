@@ -1,5 +1,5 @@
-Usefulness and Transition Report:
-	Is the product complete? Which parts are done and which aren't done?
+# Usefulness and Transition Report:
+	## Is the product complete? Which parts are done and which aren't done?
 	◦	Not complete. MVP3 is the last part for the current course.
 	Done/Mostly Done (MVP3 goals):
 	▪	Mechanics of winning the game.
