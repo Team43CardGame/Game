@@ -52,3 +52,16 @@ Customer feedback on your README (go through it together at the meeting):
 	What two other sections the customer would like to be included in the ReadMe?
 	◦	The customer did not explicitly ask for two new sections to be included. When asked by Egor, he stated, "I don't think that... As I said, README file could be very different. You already have README file, I think. Right now. You have instructions, you have everything. Installation? I'm not sure. Do you really need to add something? Fix something? Yes. Add something? Not sure. Probably not."
 	◦	However, during the discussion about "game rules," Egor asked if a link for game rules should be added. The customer suggested adding a button within the game itself for rules, not in the README.
+
+# Meeting Transcript
+ MVP Core Features:
+
+Basic List Input: Users can input a simple list of items (e.g., names, numbers, words) via a text area or by uploading a basic text file.
+
+Weighted Selection: Users can assign a numerical weight to each item in the list. The system will then perform a random selection where items with higher weights have a proportionally higher chance of being picked.
+
+Basic Exclusion Criteria: Users can define simple rules to exclude specific items from the current random selection pool (e.g., "do not pick 'John'," or "exclude all items containing 'old'"). This addresses a basic form of "custom rules and criteria."
+
+Single Random Pick: The system will output a single randomly selected item based on the current list, weights, and exclusion criteria.
+
+Clear Output: The selected item is clearly displayed to the user.
