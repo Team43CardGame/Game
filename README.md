@@ -71,7 +71,7 @@
   - [x] Spell list in game
   - [x] 3 cards spells implementation
   - [x] Sound design
-  - [ ] Animations
+  - [x] Animations
   - [x] List of connected payers
   - [x] Auto-pass turn
   - [x] Disable the ability to start a game with less 
@@ -87,25 +87,24 @@
   - [ ] Skins for cards and table
   - [ ] Matchmaking
 
-# Game Installation
+# Instruction
+## Game Installation
 
 ---
-## Windows
-1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FGame%2Ftree%2Fmain%2FMVP2_5Windows)
+### Windows
+1. To download the archive of game click: [Dowload the Game](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FTeam43CardGame%2FBuilds%2Ftree%2Fmain%2FMVP3Windows)
 
-2. Unzip by any method, for example **RMB** to archive **MVP2_5Windows.zip**, in list chose **Extract all** and chose place for it (don't matter)
+2. Unzip by any method, for example **RMB** to archive **MVP3Windows.zip**, in list chose **Extract all** and chose place for it (don't matter)
 
-3. Open the directory **MVP** and double click **LMB** on **CardGameMultiplayer**, the game will be lauched
+3. Open the directory **MVP3Windows** and double click **LMB** on **NAME_CARD_GAME_43**, the game will be lauched
+### Linux
+#### Instruction for Mint
+1. To download the archive of game click: [Dowload the Game](https://disk.yandex.ru/d/F0GWgnw2OoyVKQ)
 
-4. Also in the directory you can find **HOW_TO_LAUCH_GAME.md** with similar instruction
-## Linux
-### Instruction for Mint
-1. To download the archive of game click: [Dowload the Game](https://disk.yandex.ru/d/8sWujZrfRDXbBg)
+2. Unzip by any method, for example on windows, **RMB** to archive **MVP3Linux.zip**, in list chose **Extract**
 
-2. Unzip by any method, for example on windows, **RMB** to archive **MVP2.zip**, in list chose **Extract**
-
-3. Click **LMB** on **WEEK 6 MVP.x86_64**, the game will be lauched
-# Usage insructions - How to play
+3. Click **LMB** on **NAME_CARD_GAME_43.x86_64**, the game will be lauched
+### Usage insructions - How to play
 
 ---
 
