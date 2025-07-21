@@ -66,22 +66,21 @@
 - [x] MVP 2.5
   - [x] Drag and Drop mechanic
   - [x] Main menu
-- [ ] MVP 3
-  - [ ] Mechanic of winning the game
-  - [ ] Spell list in game
-  - [ ] 3 cards spells implementation
-  - [ ] Sound design
+- [x] MVP 3
+  - [x] Mechanic of winning the game
+  - [x] Spell list in game
+  - [x] 3 cards spells implementation
+  - [x] Sound design
   - [ ] Animations
-  - [ ] List of connected payers
-  - [ ] Auto-pass turn
-  - [ ] Disable the ability to start a game with less 
+  - [x] List of connected payers
+  - [x] Auto-pass turn
+  - [x] Disable the ability to start a game with less 
   than 3 players
-  - [ ] Ability to choose name
 - [ ] MVP 4
   - [ ] Tutorial
   - [ ] Custom avatars
   - [ ] List of available lobbies
-  - [ ] Explicit indication of spell results for all players
+  - [ ] Ability to choose name
 - [ ] MVP 5
   - [ ] Online game mode
   - [ ] Android port
@@ -122,11 +121,11 @@
 
 6. From this point the game is actually started
 
-7. Players turns goes one after another, in your turn you can place the card using drag-and-drop and click **Pass** to pass the turn
+7. Players turns goes one after another, in your turn you can place the card using drag-and-drop, the turn passes to the next player
 
-8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell and click on target, then click **Pass** to pass the turn
+8. When you have 2 cards in the spell, you can click **Cast** button to cast the spell and click on target, the turn passes to the next player
 
-9. In this way game is playing, now there is no finish game mechanic, so for exit press **Alt + F4** at keybord, this is all for now
+9. In this way game is playing, the first player that first run ot of card is winner of the game
 
 # Documentation [Link](docs)
 
