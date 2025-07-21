@@ -5,9 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ## [Unreleased]
 
-- Main menu
 - Settings menu
 - Status effect visual
+
+## MVP 3 - 2025-07-13
+
+### Added
+- Main menu
+- Auto-pass
+- Game winning condition
+- Sounds
+
+### Fixed
+- Fixed some spell bugs
+
 
 ## MVP 2.5 - 2025-07-13
 
